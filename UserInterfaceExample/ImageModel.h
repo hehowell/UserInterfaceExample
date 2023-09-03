@@ -14,10 +14,13 @@ NS_ASSUME_NONNULL_BEGIN
 @interface ImageModel : NSObject
 
 +(ImageModel*)sharedInstance;
-
 -(UIImage*)getImageWithName:(NSString*)name;
+-(UIImage*)getImageWithIndex:(NSInteger)index;
+-(NSInteger)numberOfImages;
+-(NSString*)getImageName:(NSInteger)index;
 
-@property (strong, nonatomic) NSArray* imageNames;
+@property (strong, readonly, nonatomic) NSMutableDictionary* loadImages;
+//@property (strong, readonly, nonatomic) NSArray* imageNames;
 
 @end
 

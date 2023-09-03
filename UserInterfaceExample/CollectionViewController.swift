@@ -33,16 +33,16 @@ class CollectionViewController: UICollectionViewController {
 
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.imageModel.imageNames.count
+        return self.imageModel.loadImages.allKeys.count
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as? CollectionViewCell {
             
-            if let name = self.imageModel.imageNames[indexPath.row] as? String{
-                cell.imageView.image = self.imageModel.getImageWithName(name)
-            }
+//            if let name = self.imageModel.loadImages(indexPath.row) as? String{
+            cell.imageView.image = self.imageModel.getImageWithName(self.imageModel.getImageName(indexPath.row))
+//            }
             
             return cell
         }else{
